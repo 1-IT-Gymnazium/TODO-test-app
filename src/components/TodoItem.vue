@@ -12,7 +12,8 @@
 
 <script setup>
 import {ref, watch} from 'vue';
-import {useTodoStore} from 'stores/todo';
+import {useTodoStore} from "stores/todo-store";
+
 
 const props = defineProps({
   todo: Object
