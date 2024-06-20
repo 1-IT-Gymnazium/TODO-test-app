@@ -17,6 +17,7 @@ const todos = todoStore.$state.todos;
 
 onMounted(() => {
   todoStore.fetchTodos();
+  console.log(todos)
 });
 
 const updateTodo = async (updatedTodo) => {

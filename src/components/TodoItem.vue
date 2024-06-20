@@ -2,9 +2,9 @@
   <q-card>
     <q-card-section>
       <div>
-        <q-checkbox v-model="localTodo.completed" @update:model-value="updateTodo" />
+        <q-checkbox v-model="localTodo.completed" @update:model-value="updateTodo"/>
         <span>{{ localTodo.title }}</span>
-        <q-btn label="Delete" color="negative" @click="deleteTodo" />
+        <q-btn label="Delete" color="negative" @click="deleteTodo"/>
       </div>
     </q-card-section>
   </q-card>
@@ -12,7 +12,6 @@
 
 <script setup>
 import {ref, watch} from 'vue';
-import {useTodoStore} from "stores/todo-store";
 
 
 const props = defineProps({
@@ -30,7 +29,6 @@ watch(() => props.todo, (newVal) => {
   localTodo.value = {...newVal};
 });
 
-const todoStore = useTodoStore();
 
 const deleteTodo = () => {
   emits('delete', localTodo.value.id);
