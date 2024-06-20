@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div v-if="isLoading">
+    Loading...
+  </div>
+  <div v-else>
     <div v-for="todo in todos" :key="todo.id">
       <TodoItem :todo="todo" @update="updateTodo" @delete="deleteTodo" />
     </div>
@@ -7,24 +10,28 @@
 </template>
 
 <script setup>
-
-import { onMounted } from 'vue';
-import TodoItem from 'components/TodoItem.vue';
+import { ref, onMounted } from 'vue';
+import TodoItem from '../components/TodoItem.vue';
 import {useTodoStore} from "stores/todo-store";
 
-const todoStore = useTodoStore();
-const todos = todoStore.$state.todos;
 
-onMounted(() => {
-  todoStore.fetchTodos();
-  console.log(todos)
+const todoStore = useTodoStore();
+const todos = ref([]);
+const isLoading = ref(true);
+
+onMounted(async () => {
+  await todoStore.fetchTodos();
+  todos.value = todoStore.todos;
+  isLoading.value = false;
 });
 
 const updateTodo = async (updatedTodo) => {
   await todoStore.updateTodo(updatedTodo);
+  // Aktualizujte lokální seznam úkolů, pokud je to nutné
 };
 
 const deleteTodo = (id) => {
   todoStore.removeTodo(id);
+  // Aktualizujte lokální seznam úkolů, pokud je to nutné
 };
 </script>
