@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <AddTodo />
+    <AddTodo class="q-my-md" />
     <TodoList />
   </q-page>
 </template>
