@@ -1,5 +1,4 @@
 <template>
-  <q-card>
     <q-card-section>
       <div>
         <q-checkbox v-model="localTodo.completed" @update:model-value="updateTodo"/>
@@ -7,7 +6,7 @@
         <q-btn label="Delete" color="negative" @click="deleteTodo"/>
       </div>
     </q-card-section>
-  </q-card>
+  <q-separator />
 </template>
 
 <script setup>

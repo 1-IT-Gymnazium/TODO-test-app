@@ -3,9 +3,11 @@
     Loading...
   </div>
   <div v-else>
-    <div v-for="todo in todos" :key="todo.id">
-      <TodoItem :todo="todo" @update="updateTodo" @delete="deleteTodo" />
-    </div>
+    <q-card>
+        <div v-for="todo in todos" :key="todo.id">
+          <TodoItem :todo="todo" @update="updateTodo" @delete="deleteTodo"/>
+        </div>
+      </q-card>
   </div>
 </template>
 
