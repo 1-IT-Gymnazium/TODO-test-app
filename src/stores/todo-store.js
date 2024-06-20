@@ -17,6 +17,13 @@ export const useTodoStore = defineStore('todo', {
     async removeTodo(id) {
       await axios.delete(`http://localhost:3000/todos/${id}`);
       this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    async updateTodo(updatedTodo) {
+      await axios.put(`http://localhost:3000/todos/${updatedTodo.id}`, updatedTodo);
+      const index = this.todos.findIndex(todo => todo.id === updatedTodo.id);
+      if (index !== -1) {
+        this.todos[index] = updatedTodo;
+      }
     }
   }
 });
