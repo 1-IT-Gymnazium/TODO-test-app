@@ -30,8 +30,9 @@ const updateTodo = async (updatedTodo) => {
   // Aktualizujte lokální seznam úkolů, pokud je to nutné
 };
 
-const deleteTodo = (id) => {
-  todoStore.removeTodo(id);
-  // Aktualizujte lokální seznam úkolů, pokud je to nutné
+const deleteTodo = async (id) => {
+  await todoStore.removeTodo(id);
+  // Aktualizujte lokální seznam úkolů po smazání
+  todos.value = todoStore.todos;
 };
 </script>
